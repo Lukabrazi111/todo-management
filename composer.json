@@ -1,0 +1,15 @@
+{
+    "name": "lukabrazi/todo-management",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luka Khangoshvili",
+            "email": "lukabrazi@redberry.ge"
+        }
+    ],
+    "require": {}
+}
