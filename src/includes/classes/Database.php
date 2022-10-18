@@ -1,6 +1,6 @@
 <?php
 
-namespace app\src\includes;
+namespace app\src\includes\classes;
 
 use PDO;
 use PDOException;
@@ -12,11 +12,12 @@ class Database
     protected string $password = '';
     protected string $database_name = 'todo_management';
 
-    public function __construct()
+    public function connect()
     {
         try {
             $connect = new PDO("mysql:host=$this->server_name;dbname=$this->database_name", $this->username, $this->password);
             $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $connect;
         } catch (PDOException $exception) {
             echo "Connection failed! " . $exception->getMessage();
         }

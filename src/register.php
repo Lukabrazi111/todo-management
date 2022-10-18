@@ -19,6 +19,10 @@ $helpers = new Helpers();
             <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name">
         </div>
         <div class="form-floating">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="form-floating">
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
         </div>
@@ -28,7 +32,7 @@ $helpers = new Helpers();
         </div>
         <div class="form-floating">
             <label for="confirmation_password">Confirmation Password</label>
-            <input type="text" class="form-control" id="confirmation_password" name="confirmation_password"
+            <input type="password" class="form-control" id="confirmation_password" name="confirmation_password"
                    placeholder="Confirmation password">
         </div>
         <button class="w-100 btn btn-md btn-primary" name="submit" type="submit">Registration</button>
