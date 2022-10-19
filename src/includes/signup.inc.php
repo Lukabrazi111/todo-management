@@ -1,6 +1,6 @@
 <?php
 
-use app\src\includes\classes\Signup;
+use app\src\includes\classes\UserController;
 use app\src\includes\classes\Validation;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     ];
 
     $validation = new Validation($data);
-    $sign_up = new Signup();
+    $sign_up = new UserController();
 
     /**
      * Check if fields is empty.
@@ -63,4 +63,5 @@ if (isset($_POST['submit'])) {
 
     $sign_up->storeUser($data);
     header('Location: ../login.php');
+    exit();
 }
