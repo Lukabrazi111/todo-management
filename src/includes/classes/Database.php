@@ -2,6 +2,7 @@
 
 namespace app\src\includes\classes;
 
+
 use PDO;
 use PDOException;
 
@@ -20,6 +21,7 @@ class Database
             return $connect;
         } catch (PDOException $exception) {
             echo "Connection failed! " . $exception->getMessage();
+            exit();
         }
     }
 }

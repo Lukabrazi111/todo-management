@@ -4,26 +4,23 @@ namespace app\src\includes\classes;
 
 class Signup extends Database
 {
-    /**
-     * Check empty fields.
-     * @param array $data
-     * @return bool
-     */
-    public function checkEmptyFields(array $data): bool
+    public function storeUser(array $data)
     {
-        if (
-            empty($data['first_name']) ||
-            empty($data['last_name']) ||
-            empty($data['username']) ||
-            empty($data['email']) ||
-            empty($data['password']) ||
-            empty($data['confirmation_password'])
-        ) {
-            $result = false;
-        } else {
-            $result = true;
-        }
+        $first_name = $data['first_name'];
+        $last_name = $data['last_name'];
+        $username = $data['username'];
+        $email = $data['email'];
+        $password = $data['password'];
 
-        return $result;
+        $sql = "insert into `users` (`first_name`, `last_name`, `username`, `email`, `password`)
+                values ('$first_name', '$last_name', '$username', '$email', '$password')";
+
+        $connection = $this->connect();
+
+        if ($connection->query($sql)) {
+            echo "New record created!";
+        } else {
+            echo "error: " . $connection->errorCode();
+        }
     }
 }

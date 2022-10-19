@@ -11,5 +11,7 @@
             "email": "lukabrazi@redberry.ge"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }
