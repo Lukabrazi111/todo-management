@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use app\src\libs\Helpers;
@@ -8,6 +9,21 @@ $helpers = new Helpers();
 
 <?php $helpers->view('header', ['title' => 'Registration Page']) ?>
 <main class="w-100 m-auto container">
+    <?php
+    if (isset($_SESSION['error'])) {
+        echo '
+              <div style="
+                  background: rgba(255,0,0,0.4);
+                  padding: 1rem;
+                  font-weight: bold;
+              "
+              >' . $_SESSION['error'] . '</div>
+        ';
+
+        unset($_SESSION['error']);
+        session_destroy();
+    }
+    ?>
     <form method="post" action="./includes/signup.inc.php">
         <h1 class="h3 mb-3 fw-normal">Registration</h1>
         <div class="form-floating">
