@@ -30,6 +30,5 @@ class Helpers
     {
         $_SESSION[$error_name] = $message;
         header('Location: ../' . $redirect);
-        exit();
     }
 }

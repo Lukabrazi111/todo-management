@@ -8,6 +8,7 @@ $helpers = new Helpers();
 ?>
 
 <?php $helpers->view('header', ['title' => 'Login Page']) ?>
+
 <main class="w-100 m-auto container">
     <?php
     if (isset($_SESSION['success'])) {
@@ -33,4 +34,5 @@ $helpers = new Helpers();
         <button class="w-100 btn btn-md btn-primary" type="submit">Sign in</button>
     </form>
 </main>
+
 <?php $helpers->view('footer') ?>

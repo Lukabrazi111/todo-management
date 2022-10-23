@@ -26,6 +26,7 @@ if (isset($_POST['submit'])) {
      */
     if ($validation->checkEmptyFields() === false) {
         $helpers->redirectWithSession('register.php', 'error', 'Please fill all fields!');
+        exit();
     }
 
     /**
@@ -33,6 +34,7 @@ if (isset($_POST['submit'])) {
      */
     if ($validation->checkLength($data['username']) === false) {
         $helpers->redirectWithSession('register.php', 'error', 'Username must be greater than 5!');
+        exit();
     }
 
     /**
@@ -40,6 +42,7 @@ if (isset($_POST['submit'])) {
      */
     if ($validation->checkEmail() === false) {
         $helpers->redirectWithSession('register.php', 'error', 'Email is not valid!');
+        exit();
     }
 
     /**
@@ -47,6 +50,7 @@ if (isset($_POST['submit'])) {
      */
     if (!preg_match('@[^\w]@', $data['password'])) {
         $helpers->redirectWithSession('register.php', 'error', 'Password should include special characters!');
+        exit();
     }
 
     /**
@@ -54,6 +58,7 @@ if (isset($_POST['submit'])) {
      */
     if ($validation->checkPasswordMatch() === false) {
         $helpers->redirectWithSession('register.php', 'error', 'Password mismatch!');
+        exit();
     }
 
     /**
@@ -61,6 +66,15 @@ if (isset($_POST['submit'])) {
      */
     if ($validation->checkLength($data['password']) === false || $validation->checkLength($data['confirmation_password']) === false) {
         $helpers->redirectWithSession('register.php', 'error', 'Password must be greater than 5!');
+        exit();
+    }
+
+    /**
+     * Check username or email exist.
+     */
+    if ($validation->userExist($data['username'], $data['email']) === false) {
+        $helpers->redirectWithSession('register.php', 'error', 'Username or email already exist!');
+        exit();
     }
 
     $sign_up->storeUser($data);

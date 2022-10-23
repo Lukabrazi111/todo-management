@@ -2,7 +2,7 @@
 
 namespace app\src\includes\classes;
 
-class Validation
+class Validation extends Database
 {
     private array $data;
 
@@ -77,6 +77,29 @@ class Validation
         $email = $this->data['email'];
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $result = false;
+        } else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Check unique username.
+     * @param $username
+     * @return bool
+     */
+    public function userExist($username, $email): bool
+    {
+        $connect = $this->connect();
+
+        $sql = "select * from `users` where `username` = ? or `email` = ?";
+
+        $stmt = $connect->prepare($sql);
+        $stmt->execute([$username, $email]);
+
+        if ($stmt->rowCount() > 0) {
             $result = false;
         } else {
             $result = true;
