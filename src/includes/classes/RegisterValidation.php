@@ -2,7 +2,7 @@
 
 namespace app\src\includes\classes;
 
-class Validation extends Database
+class RegisterValidation extends Database
 {
     private array $data;
 
@@ -19,7 +19,7 @@ class Validation extends Database
      * @param array $data
      * @return bool
      */
-    public function checkEmptyFields(): bool
+    public function checkEmptyFields()
     {
         if (
             empty($this->data['first_name']) ||

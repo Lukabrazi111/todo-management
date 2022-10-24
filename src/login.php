@@ -19,19 +19,35 @@ $helpers = new Helpers();
         unset($_SESSION['success']);
         session_destroy();
     }
+
+    if (isset($_SESSION['error'])) {
+        echo '
+              <div style="
+                  background: rgba(255,0,0,0.4);
+                  padding: 1rem;
+                  font-weight: bold;
+              "
+              >' . $_SESSION['error'] . '</div>
+        ';
+
+        unset($_SESSION['error']);
+        session_destroy();
+    }
     ?>
-    <form method="post" action="#">
+
+    <form method="post" action="includes/signin.inc.php">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+            <label for="username_email">Enter username or email</label>
+            <input type="text" class="form-control" id="username_email" name="username_email"
+                   placeholder="Username or email">
         </div>
         <div class="form-floating">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
-        <button class="w-100 btn btn-md btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-md btn-primary" type="submit" name="submit">Sign in</button>
     </form>
 </main>
 

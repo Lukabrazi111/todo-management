@@ -1,8 +1,9 @@
 <?php
+
+namespace app\src\includes\classes;
+
 session_start();
 
-use app\src\includes\classes\UserController;
-use app\src\includes\classes\Validation;
 use app\src\libs\Helpers;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -17,7 +18,7 @@ if (isset($_POST['submit'])) {
         'confirmation_password' => $_POST['confirmation_password'],
     ];
 
-    $validation = new Validation($data);
+    $validation = new RegisterValidation($data);
     $sign_up = new UserController();
     $helpers = new Helpers();
 

@@ -22,4 +22,16 @@ class UserController extends Database
         $stmt->execute([$data['first_name'], $data['last_name'], $data['username'], $data['email'], $hashedPassword, $currentTime]);
         $stmt = null;
     }
+
+    /**
+     * User authorization.
+     * @param array $data
+     */
+    public function auth($data)
+    {
+        $username_email = $data['username_email'];
+        $password = $data['password'];
+        $_SESSION['logged_in'] = true;
+        header('Location: ../index.php');
+    }
 }
