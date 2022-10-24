@@ -2,7 +2,6 @@
 
 namespace app\src\includes\classes;
 
-
 use PDO;
 use PDOException;
 

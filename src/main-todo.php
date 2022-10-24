@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_SESSION['logged_in'])) {
+    header('Location: ./login.php');
+    exit();
+}
 ?>
 <div class="container">
     <section class="vh-100" style="background-color: #eee;">
@@ -9,7 +13,7 @@
                     <div class="card rounded-3">
                         <div class="card-body p-4">
                             <h4 class="text-center my-3 pb-3">To Do App</h4>
-                            <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                            <form method="post" action="#" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                                 <div class="col-12">
                                     <div class="form-outline">
                                         <input type="text" id="form1" class="form-control"/>
