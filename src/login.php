@@ -5,6 +5,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use app\src\libs\Helpers;
 
 $helpers = new Helpers();
+
+if (isset($_SESSION['logged_in'])) {
+    header('Location: ./index.php');
+    exit();
+}
+
 ?>
 
 <?php $helpers->view('header', ['title' => 'Login Page']) ?>
